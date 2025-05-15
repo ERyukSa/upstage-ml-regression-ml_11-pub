@@ -1,0 +1,26 @@
+name: py39-rapids-env1
+channels:
+  - nvidia
+  - conda-forge
+  - rapidsai
+  - defaults
+dependencies:
+  - python=3.9
+  - cuda-version=11.8
+  - rapids=23.12
+  - ipykernel
+  - torchvision
+  - torchaudio
+  - pytorch
+  - nbconvert
+  - pytorch-cuda=11.8
+  - joblib
+  - seaborn
+  - scikit-learn
+  - numpy
+  - matplotlib
+  - pandas
+  - mamba
+  - lightgbm
+  - rtree
+prefix: /data/ephemeral/home/miniconda3/envs/py39-rapids-env1
