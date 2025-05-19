@@ -2,10 +2,29 @@
 
 ## ML_11조 - Upstage ML 회귀 경진대회 7위
 
-| ![홍상호](https://github.com/UpstageAILab/upstage-ml-regression-11/blob/main/docs/images/team/AI13_홍상호.jpg?raw=true) | ![신광명](https://github.com/UpstageAILab/upstage-ml-regression-11/blob/main/docs/images/team/AI13_신광명.jpg?raw=true) | ![최용비](https://github.com/UpstageAILab/upstage-ml-regression-11/blob/main/docs/images/team/AI13_최용비.png?raw=true) | ![이영준](https://github.com/UpstageAILab/upstage-ml-regression-11/blob/main/docs/images/team/AI13_이영준.jpg?raw=true) | ![김문수](https://github.com/UpstageAILab/upstage-ml-regression-11/blob/main/docs/images/team/AI13_김문수.jpg?raw=true) |
-| :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: |
-| [AI13_홍상호](https://github.com/ERyukSa) | [AI13_신광명](https://github.com/YOUR_GITHUB) | [AI13_최용비](https://github.com/Wchoi189) | [AI13_이영준](https://github.com/YOUR_GITHUB) | [AI13_김문수](https://github.com/YOUR_GITHUB) |
-| 시각화, 데이터 검증 | EDA, 전처리 | 교통 피처 병렬화 (Wb2x2) | 모델링, 모델 최적화 | 특성 공학, 교통 관련 피처 생성 |
+<table>
+  <tr>
+    <td align="center"><img src="https://github.com/AIBootcamp13/upstage-ml-regression-ml_11/blob/wb2x/docs/team/images/AI13_홍상호.jpeg?raw=true" width="180" height="180"/></td>
+    <td align="center"><img src="https://github.com/AIBootcamp13/upstage-ml-regression-ml_11/blob/wb2x/docs/team/images/AI13_신광명.jpg?raw=true" width="180" height="180"/></td>
+    <td align="center"><img src="https://github.com/AIBootcamp13/upstage-ml-regression-ml_11/blob/wb2x/docs/team/images/AI13_최용비.png?raw=true" width="180" height="180"/></td>
+    <td align="center"><img src="https://github.com/AIBootcamp13/upstage-ml-regression-ml_11/blob/wb2x/docs/team/images/AI13_이영준.png?raw=true" width="180" height="180"/></td>
+    <td align="center"><img src="https://github.com/AIBootcamp13/upstage-ml-regression-ml_11/blob/wb2x/docs/team/images/AI13_김문수.jpg?raw=true" width="180" height="180"/></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/YOUR_GITHUB">AI13_홍상호</a></td>
+    <td align="center"><a href="https://github.com/YOUR_GITHUB">AI13_신광명</a></td>
+    <td align="center"><a href="https://github.com/YOUR_GITHUB">AI13_최용비</a></td>
+    <td align="center"><a href="https://github.com/YOUR_GITHUB">AI13_이영준</a></td>
+    <td align="center"><a href="https://github.com/YOUR_GITHUB">AI13_김문수</a></td>
+  </tr>
+  <tr>
+    <td align="center">시각화, 데이터 검증</td>
+    <td align="center">EDA, 전처리</td>
+    <td align="center">교통 피처 병렬화 (Wb2x2)</td>
+    <td align="center">모델링, 모델 최적화</td>
+    <td align="center">특성 공학, 교통 관련 피처 생성</td>
+  </tr>
+</table>
 
 ## 0. 개요
 
@@ -55,23 +74,45 @@ seaborn>=0.11.2
 
 ```
 ├── code
-│   ├── transportation_clustering.py     # 교통 허브 식별
-│   ├── transport_features_module.py     # 핵심 교통 특성 모듈
-│   ├── transport_features_parallel.py   # 병렬 처리
-│   ├── transport_feature_analysis.py    # 교통 영향 분석
-│   └── XGBOOST(model).ipynb            # 주요 모델 학습 노트북
-├── cache
-│   └── transportation_features         # 캐시된 공간 인덱스 및 결과
-│       ├── spatial_indices
-│       ├── chunks
-│       └── hub_clustering.pkl
+│   ├── XGBoost_refactor_RMSE_1894.8507                           # 리팩토링된 XGBoost 모델
+│   ├── address_to_geo                                            # 주소 지오코딩 변환
+│   └── xgboost_model_with_advanced_transportation_features       # 고급 교통 특성 모델
+│       ├── XGBOOST_revised_transportation.ipynb                  # 주요 모델 학습 노트북
+│       ├── outputs                                               # 모델 분석 및 시각화 결과
+│       ├── cache                                                 # 캐시된 공간 인덱스 및 특성
+│       │   └── transportation_features
+│       │       ├── spatial_indices
+│       │       ├── data_with_transport_features.pkl
+│       │       └── hub_clustering.pkl
+│       └── transportation_features_module                        # 교통 특성 모듈
+│           ├── transport_features_module.py                      # 핵심 교통 특성 모듈
+│           ├── transport_features_parallel.py                    # 병렬 처리 최적화
+│           ├── transportation_clustering.py                      # 교통 허브 클러스터링
+│           └── transport_feature_analysis.py                     # 교통 특성 분석
 ├── data
-│   ├── train_updated.csv               # 학습 데이터
-│   ├── test_updated.csv                # 테스트 데이터
-│   ├── subway_feature.csv              # 지하철역 데이터
-│   └── bus_feature.csv                 # 버스 정류장 데이터
-└── models
-    └── xgb_model_fold1.pkl             # 교차 검증에서 얻은 최상의 모델
+│   ├── train.csv                                                 # 원본 학습 데이터
+│   ├── train_updated.csv                                         # 전처리된 학습 데이터
+│   ├── test.csv                                                  # 원본 테스트 데이터
+│   ├── test_updated.csv                                          # 전처리된 테스트 데이터
+│   ├── subway_feature.csv                                        # 지하철역 데이터
+│   ├── bus_feature.csv                                           # 버스 정류장 데이터
+│   └── sample_submission.csv                                     # 샘플 제출 파일
+└── docs
+├── EDA                                                       # EDA 결과물
+│   ├── eda_image_outputs                                     # EDA 시각화 이미지
+│   └── 종합적인 탐색적 데이터 분석 (EDA)(For Baseline).pdf      # 종합 EDA 보고서
+├── images
+│   └── leaderboard.jpg                                       # 리더보드 이미지
+├── requirements                                              # 환경 설정 파일
+│   ├── requirements_pip_freeze.txt
+│   └── environment_py39_rapids_env1.yml
+└── team
+└── images                                                # 팀원 이미지
+├── AI13_홍상호.jpeg
+├── AI13_신광명.jpg
+├── AI13_최용비.png
+├── AI13_이영준.png
+└── AI13_김문수.jpg
 ```
 
 ## 3. 데이터 설명
@@ -210,7 +251,11 @@ seaborn>=0.11.2
 
 ### 리더보드
 
-![리더보드](https://github.com/UpstageAILab/upstage-ml-regression-11/blob/main/docs/images/leaderboard.jpg?raw=true)
+<div align="center">
+  <img src="https://github.com/AIBootcamp13/upstage-ml-regression-ml_11/blob/wb2x/docs/images/leaderboard.jpg?raw=true" 
+       alt="리더보드" 
+       width="800" />
+</div>
 
 **최종 결과:**
 - 순위: 7위
